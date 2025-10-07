@@ -15,8 +15,8 @@ const app = express();
 
 // ✅ CORS configuration for deployed frontend
 app.use(cors({
-  origin: "https://flysure-web.vercel.app/", // your frontend URL
-  credentials: true // allows cookies or authorization headers
+  origin: "https://flysure-koj7c14k-sushan-achars-projects.vercel.app",
+  credentials: true,
 }));
 
 app.use(express.json());

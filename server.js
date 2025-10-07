@@ -15,7 +15,7 @@ const app = express();
 
 // ✅ CORS configuration for deployed frontend
 app.use(cors({
-  origin: "https://flysure-koj7c14k-sushan-achars-projects.vercel.app",
+  origin: "https://flysure-web.vercel.app",
   credentials: true,
 }));
 

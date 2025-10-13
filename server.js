@@ -7,6 +7,8 @@ import authRoutes from "./routes/authRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
 import enrollmentRoutes from "./routes/enrollmentRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import feedbackRoutes from "./routes/feedbackRoutes.js";
+
 
 dotenv.config();
 connectDB();
@@ -26,6 +28,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/enrollments", enrollmentRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/feedback", feedbackRoutes);
+
 
 // Test route
 app.get("/", (req, res) => {

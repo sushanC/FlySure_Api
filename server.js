@@ -16,12 +16,17 @@ connectDB();
 const app = express();
 
 // ✅ CORS configuration for deployed frontend
+
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://your-frontend.vercel.app"], // add frontend URL
-    credentials: true,
+    origin: [
+      "https://flysure-web.vercel.app",  // your deployed frontend
+      "http://localhost:5173",           // for local dev
+    ],
+    credentials: true,                   // allow cookies and auth headers
   })
 );
+
 
 app.use(express.json());
 

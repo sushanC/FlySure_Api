@@ -1,29 +1,13 @@
-// routes/feedbackRoutes.js
 import express from "express";
-import Feedback from "../models/Feedback.js";
-import { verifyAdmin } from "../middleware/authMiddleware.js";
+import { submitFeedback, getAllFeedback } from "../controllers/feedbackController.js";
+import { protect, adminOnly } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-// POST feedback (any logged-in user can submit)
-router.post("/", async (req, res) => {
-  try {
-    const { name, course, message } = req.body;
-    const feedback = await Feedback.create({ name, course, message });
-    res.status(201).json({ message: "Feedback submitted successfully!" });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+// 📝 User Feedback (Public or Logged-In Users)
+router.post("/", submitFeedback);
 
-// GET all feedbacks (admin only)
-router.get("/", verifyAdmin, async (req, res) => {
-  try {
-    const feedbacks = await Feedback.find().sort({ createdAt: -1 });
-    res.json(feedbacks);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+// 🔒 Admin Dashboard - See all feedback
+router.get("/", protect, adminOnly, getAllFeedback);
 
 export default router;

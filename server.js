@@ -20,12 +20,16 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://www.flysureacademy.com/",  // your deployed frontend
-      "http://localhost:5173",           // for local dev
+      "https://flysureacademy.com",       // ✅ Main domain
+      "https://www.flysureacademy.com",   // ✅ www version
+      "https://flysure-web.vercel.app",   // ✅ Vercel temp domain
+      "http://localhost:5173"             // ✅ Local development
     ],
-    credentials: true,                   // allow cookies and auth headers
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
   })
 );
+
 
 
 app.use(express.json());
